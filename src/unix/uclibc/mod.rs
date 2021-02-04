@@ -362,6 +362,14 @@ s_no_extra_traits! {
     #[allow(missing_debug_implementations)]
     pub struct epoll_event {
         pub events: u32,
+        pub data: epoll_data,
+    }
+
+    #[allow(missing_debug_implementations)]
+    pub union epoll_data {
+        pub ptr: *mut ::c_void,
+        pub fd: ::c_int,
+        pub u32: u32,
         pub u64: u64,
     }
 
